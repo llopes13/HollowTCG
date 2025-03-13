@@ -1,4 +1,4 @@
-const API_KEY = '1f2d482b-ab15-47f8-a444-ef88ec023590 '; // 🔴 Reemplázalo con tu clave API
+const API_KEY = '1f2d482b-ab15-47f8-a444-ef88ec023590';
         const API_URL = 'https://api.pokemontcg.io/v2/cards';
 
         async function getCards(query) {

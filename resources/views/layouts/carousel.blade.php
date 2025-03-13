@@ -31,20 +31,6 @@
             <div class="swiper-pagination !bottom-2 !top-auto !w-80 right-0 mx-auto bg-gray-100"></div>
         </div>
     </div>
-
-    <script>
-        var swiper = new Swiper(".progress-slide-carousel", {
-        loop: true,
-        fraction: true,
-        autoplay: {
-          delay: 1800,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".progress-slide-carousel .swiper-pagination",
-          type: "progressbar",
-        },
-        });
-        </script>
+    <script src="{{ asset('js/carousel.js')}}"></script>
 </body>
 </html>

@@ -12,19 +12,19 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
         <li>
-          <a href="#" class="block py-2 px-3 text-[#D4C2FC] rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Inicio</a>
+          <a href="/" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Inicio</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-[#D4C2FC] rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Cards</a>
+          <a href="cards" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Cards</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-[#D4C2FC] rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Sobres</a>
+          <a href="#" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Sobres</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-[#D4C2FC] rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Accesorios</a>
+          <a href="#" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Accesorios</a>
         </li>
         <li>
-          <a href="login" class="block py-2 px-3 text-[#D4C2FC] rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Login</a>
+          <a href="login" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Login</a>
         </li>
       </ul>
     </div>
