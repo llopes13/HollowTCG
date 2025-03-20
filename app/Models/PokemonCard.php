@@ -9,5 +9,8 @@ class PokemonCard extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['card_id', 'name', 'image_url', 'price'];
+    protected $fillable = [
+        'card_id', 'name', 'image_url', 'rarity', 'collections', 'price'
+    ];
+
 }

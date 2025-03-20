@@ -26,12 +26,15 @@ class PokemonCardController extends Controller
         foreach ($cards as $card) {
             $price = $card['cardmarket']['prices']['trendPrice'] ?? $card['tcgplayer']['prices']['holofoil']['market'] ?? $card['tcgplayer']['prices']['normal']['low'] ?? $card['tcgplayer']['prices']['holofoil']['low'] ?? null;
 
+            $rarity = $card['rarity'] ?? 'Desconocida';
 
             PokemonCard::updateOrCreate(
                 ['card_id' => $card['id']],
                 [
                     'name' => $card['name'],
                     'image_url' => $card['images']['small'],
+                    'rarity' => $rarity,
+                    'collections' => $card['set']['id'],
                     'price' => $price
                 ]
             );
