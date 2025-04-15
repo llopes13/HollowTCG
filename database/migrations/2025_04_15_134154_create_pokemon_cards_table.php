@@ -17,8 +17,16 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_url');
             $table->decimal('price', 8, 2)->nullable();
+
+            $table->string('collection_id')->nullable(); // FK com string
+            $table->foreign('collection_id')->references('id')->on('collections')->nullOnDelete();
+
+            $table->unsignedBigInteger('rarity_id')->nullable(); // FK com int
+            $table->foreign('rarity_id')->references('id')->on('rarities')->nullOnDelete();
+
             $table->timestamps();
         });
+
     }
 
     /**
