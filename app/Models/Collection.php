@@ -9,10 +9,9 @@ class Collection extends Model
 {
     use HasFactory;
 
-    // Adicionando 'id' à propriedade $fillable
-    protected $fillable = ['id', 'name'];  // Adicione os outros campos conforme necessário
 
-    // Relacionamento com PokemonCard (uma coleção pode ter várias cartas)
+    protected $fillable = ['id', 'name'];
+
     public function cards()
     {
         return $this->hasMany(PokemonCard::class, 'collection_id');

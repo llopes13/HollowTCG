@@ -8,10 +8,8 @@ class Rarity extends Model
 {
     use HasFactory;
 
-    // Adicionando 'id' à propriedade $fillable
-    protected $fillable = ['id', 'name']; // Adicione os campos necessários aqui
+    protected $fillable = ['id', 'name'];
 
-    // Relacionamento com PokemonCard (uma raridade pode ter várias cartas)
     public function cards()
     {
         return $this->hasMany(PokemonCard::class, 'rarity_id');
