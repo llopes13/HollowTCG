@@ -41,9 +41,9 @@
             </div>
 
             <div>
-                <x-input-label for="billing-address" value="Direccion de facturacion" />
-                <x-text-input id="billing-address" class="block mt-1 w-full placeholder-gray-400" type="text" name="billing-address" :value="old('billing-address')" required autofocus autocomplete="billing-address"/>
-                <x-input-error :messages="$errors->get('billing-address')" class="mt-2" />
+                <x-input-label for="billing_address" value="Direccion de facturacion" />
+                <x-text-input id="billing_address" class="block mt-1 w-full placeholder-gray-400" type="text" name="billing_address" :value="old('billing_address')" required autofocus autocomplete="billing_address"/>
+                <x-input-error :messages="$errors->get('billing_address')" class="mt-2" />
                 <label for="copiarDireccio" class="inline-flex items-center mt-2">
                     <input id="copiarDireccio" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="copiarDireccio">
                     <span class="ms-2 text-sm text-[#D4C2FC]">Usar la misma direccion que la de envio</span>
@@ -103,7 +103,7 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button type="submit" class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>

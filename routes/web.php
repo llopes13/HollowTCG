@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PokemonCardController;
+use App\Http\Controllers\registerController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,5 +26,7 @@ Route::get('/pepe', function () {
 Route::get('/cards', [PokemonCardController::class, 'index']);
 
 Route::get('/fetch-cards', [PokemonCardController::class, 'fetchAndStore']);
+Route::post('/custom-register', [registerController::class, 'store'])->name('custom.register');
+
 
 require __DIR__.'/auth.php';
