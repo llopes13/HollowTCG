@@ -1,6 +1,6 @@
 <nav class="bg-[#5E1675] text-[#D4C2FC] shadow-lg">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="{{asset('image/logoHollowTCG.png')}}" class="h-8" alt="logo HollowTCG">
     </a>
     <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#D4C2FC] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
@@ -17,11 +17,9 @@
         <li>
           <a href="cards" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Cards</a>
         </li>
+
         <li>
-          <a href="#" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Sobres</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Accesorios</a>
+          <a href="shoppingCart " class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Carrito</a>
         </li>
         <li>
           <a href="login" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Login</a>
