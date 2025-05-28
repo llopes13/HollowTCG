@@ -12,17 +12,17 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
         <li>
-          <a href="/" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Inicio</a>
+          <a href="/" class="block py-2 px-3  rounded-sm hover:bg-gray-100 hover:scale-105 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0 text-lg">Inicio</a>
         </li>
         <li>
-          <a href="cards" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Cards</a>
+          <a href="cards" class="block py-2 px-3  rounded-sm hover:bg-gray-100 hover:scale-105 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0 text-lg">Cards</a>
         </li>
 
         <li>
-          <a href="shoppingCart " class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Carrito</a>
+          <a href="shoppingCart " class="block py-2 px-3  rounded-sm hover:bg-gray-100 hover:scale-105 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0 text-lg">Carrito</a>
         </li>
         <li>
-          <a href="login" class="block py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0">Login</a>
+          <a href="login" class="block py-2 px-3  rounded-sm hover:bg-gray-100 hover:scale-105 md:hover:bg-transparent md:border-0 md:hover:text-[#A76BBE] md:p-0 text-lg">Login</a>
         </li>
       </ul>
     </div>

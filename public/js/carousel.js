@@ -2,7 +2,7 @@ var swiper = new Swiper(".progress-slide-carousel", {
   loop: true,
   fraction: true,
   autoplay: {
-    delay: 1800,
+    delay: 5000,
     disableOnInteraction: false,
   },
   pagination: {

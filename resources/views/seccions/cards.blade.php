@@ -79,7 +79,7 @@
 
                         @if($card->image_url)
                             <div class="p-4 flex justify-center">
-                                <img src="{{ $card->image_url }}" alt="{{ $card->name }}" class="h-64 object-contain hover:scale-105">
+                                <img src="{{ $card->image_url }}" alt="{{ $card->name }}" class="h-64 object-contain hover:scale-110 cursor-pointer">
                             </div>
                         @endif
 
@@ -131,13 +131,10 @@
                             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                                 <h3 id="modalCardName" class="text-2xl leading-6 font-bold text-[#D4C2FC] mb-2"></h3>
 
-                                <div class="mt-4 space-y-3">
-                                    <p class="text-[#D4C2FC]">
-                                        <span class="font-medium">Precio: </span>
-                                        <span id="modalCardPrice" class="text-[#E2D1FF]"></span>
-                                    </p>
+                                <div class="mt-4 space-y-3 ">
 
-                                    <p class="text-[#D4C2FC]">
+
+                                    <p class="text-[#D4C2FC] ">
                                         <span class="font-medium">Colección: </span>
                                         <span id="modalCardCollection" class="text-[#E2D1FF]"></span>
                                     </p>
@@ -145,6 +142,10 @@
                                     <p class="text-[#D4C2FC]">
                                         <span class="font-medium">Rareza: </span>
                                         <span id="modalCardRarity" class="text-[#E2D1FF]"></span>
+                                    </p>
+                                    <p class="text-[#D4C2FC] pt-6">
+                                        <span class="font-bold">Precio: </span>
+                                        <span id="modalCardPrice" class="text-[#E2D1FF]"></span>
                                     </p>
                                 </div>
                             </div>

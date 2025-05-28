@@ -10,11 +10,11 @@ class PokemonCard extends Model
 
     public function collection()
     {
-        return $this->belongsTo(\App\Models\Collection::class);
+        return $this->belongsTo(\App\Models\Collection::class, 'collection_id', 'id');
     }
 
     public function rarity()
     {
-        return $this->belongsTo(\App\Models\Rarity::class);
+        return $this->belongsTo(\App\Models\Rarity::class, 'rarity_id', 'id');
     }
 }
