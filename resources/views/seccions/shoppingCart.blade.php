@@ -51,9 +51,13 @@
                 </div>
 
                 <div class="flex justify-end mt-6">
-                    <a href="{{ route('checkout') }}" class="px-6 py-2 bg-[#D4C2FC] text-[#16213E] rounded-md hover:bg-[#c7b0f8] font-bold">
-                        Proceder al Pago
-                    </a>
+                    <form action="{{ route('checkout.store') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="px-6 py-2 bg-[#D4C2FC] text-[#16213E] rounded-md hover:bg-[#c7b0f8] font-bold">
+                            Proceder al Pago
+                        </button>
+                    </form>
+
                 </div>
             </div>
         @else
