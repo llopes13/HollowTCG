@@ -11,7 +11,7 @@ class AdminPedidoController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::with('user', 'items.card')->orderByDesc('created_at')->get();
+        $pedidos = Order::with('user', 'items.pokemonCard')->orderByDesc('created_at')->get();
         return view('admin.pedidos.index', compact('pedidos'));
     }
 

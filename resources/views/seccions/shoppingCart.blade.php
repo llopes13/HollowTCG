@@ -1,7 +1,7 @@
 @extends('layouts.master-login')
 
 @section('content')
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 min-h-screen flex flex-col">
         <h1 class="text-3xl font-bold text-[#D4C2FC] mb-8">Tu Carrito de Compras</h1>
 
         @if(count($cart) > 0)
@@ -51,12 +51,16 @@
                 </div>
 
                 <div class="flex justify-end mt-6">
-                    <form action="{{ route('checkout.store') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="px-6 py-2 bg-[#D4C2FC] text-[#16213E] rounded-md hover:bg-[#c7b0f8] font-bold">
+                    @if(Auth::check())
+                        <a href="{{ route('checkout.index') }}" class="px-6 py-2 bg-[#D4C2FC] text-[#16213E] rounded-md hover:bg-[#c7b0f8] font-bold">
                             Proceder al Pago
-                        </button>
-                    </form>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" id="proceed-guest" class="px-6 py-2 bg-[#D4C2FC] text-[#16213E] rounded-md hover:bg-[#c7b0f8] font-bold">
+                            Proceder al Pago
+                        </a>
+                    @endif
+
 
                 </div>
             </div>
@@ -156,6 +160,38 @@
                     totalElement.textContent = `${newTotal.toFixed(2)}€`;
                 }
             }
+
+            const proceedBtn = document.getElementById('proceed-guest');
+            if (proceedBtn) {
+                proceedBtn.addEventListener('click', function (e) {
+                    const cartItems = @json($cart); // blade converte para JSON
+                    localStorage.setItem('cart_items_backup', JSON.stringify(cartItems));
+                    localStorage.setItem('redirect_after_login', 'true');
+                });
+            }
+            @if(Auth::check())
+            if (localStorage.getItem('redirect_after_login') === 'true') {
+                const items = JSON.parse(localStorage.getItem('cart_items_backup') || '[]');
+                if (items.length > 0) {
+                    fetch("{{ route('cart.import') }}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ items: items })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                localStorage.removeItem('cart_items_backup');
+                                localStorage.removeItem('redirect_after_login');
+                                window.location.href = "{{ route('checkout.index') }}";
+                            }
+                        });
+                }
+            }
+            @endif
         });
     </script>
 @endsection

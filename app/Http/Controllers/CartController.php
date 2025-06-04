@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PokemonCard;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\CartItem;
+
 
 class CartController extends Controller
 {
@@ -16,15 +19,46 @@ class CartController extends Controller
         ]);
 
         $card = PokemonCard::findOrFail($request->card_id);
+        $quantity = $request->quantity ?? 1;
+
+        if (Auth::check()) {
+            $userId = Auth::id();
+
+            $item = CartItem::where('user_id', $userId)
+                ->where('pokemon_card_id', $card->id)
+                ->first();
+
+            if ($item) {
+                $item->quantity += $quantity;
+                $item->save();
+            } else {
+                CartItem::create([
+                    'user_id' => $userId,
+                    'pokemon_card_id' => $card->id,
+                    'quantity' => $quantity
+                ]);
+            }
+
+            // contar itens
+            $count = CartItem::where('user_id', $userId)->sum('quantity');
+
+            return response()->json([
+                'success' => true,
+                'cart_count' => $count,
+                'message' => 'Carta añadida al carrito!'
+            ]);
+        }
+
+
         $cart = Session::get('cart', []);
 
-        if(isset($cart[$card->id])) {
-            $cart[$card->id]['quantity'] += $request->quantity ?? 1;
+        if (isset($cart[$card->id])) {
+            $cart[$card->id]['quantity'] += $quantity;
         } else {
             $cart[$card->id] = [
                 "id" => $card->id,
                 "name" => $card->name,
-                "quantity" => $request->quantity ?? 1,
+                "quantity" => $quantity,
                 "price" => $card->price,
                 "image" => $card->image_url
             ];
@@ -39,17 +73,38 @@ class CartController extends Controller
         ]);
     }
 
+
     public function index()
     {
-        $cart = Session::get('cart', []);
+        $cart = [];
         $total = 0;
 
-        foreach($cart as $item) {
-            $total += $item['price'] * $item['quantity'];
+        if (Auth::check()) {
+            $items = CartItem::with('pokemonCard')
+                ->where('user_id', Auth::id())
+                ->get();
+
+            foreach ($items as $item) {
+                $cart[$item->pokemonCard->id] = [
+                    'id' => $item->pokemonCard->id,
+                    'name' => $item->pokemonCard->name,
+                    'quantity' => $item->quantity,
+                    'price' => $item->pokemonCard->price,
+                    'image' => $item->pokemonCard->image_url
+                ];
+
+                $total += $item->pokemonCard->price * $item->quantity;
+            }
+        } else {
+            $cart = Session::get('cart', []);
+            foreach ($cart as $item) {
+                $total += $item['price'] * $item['quantity'];
+            }
         }
 
         return view('seccions.shoppingCart', compact('cart', 'total'));
     }
+
 
     public function remove($id)
     {
@@ -104,4 +159,25 @@ class CartController extends Controller
             'cart_count' => count($cart)
         ]);
     }
+    public function import(Request $request)
+    {
+        $items = $request->input('items', []);
+        $cart = session()->get('cart', []);
+
+        foreach ($items as $id => $item) {
+            if (is_array($item) && isset($item['id'])) {
+                if (isset($cart[$id])) {
+                    $cart[$id]['quantity'] += $item['quantity'];
+                } else {
+                    $cart[$id] = $item;
+                }
+            }
+        }
+
+
+        session()->put('cart', $cart);
+
+        return response()->json(['success' => true]);
+    }
+
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="max-w-lg mx-auto p-6 bg-white rounded shadow">
-        <h2 class="text-2xl font-bold mb-4">Criar Nova Categoria</h2>
+        <h2 class="text-2xl font-bold mb-4">Crear nueva colleccion</h2>
 
         @if ($errors->any())
             <div class="mb-4 text-red-600">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="mb-4">
-                <label for="name" class="block text-gray-700">Nome</label>
+                <label for="name" class="block text-gray-700">Nombre</label>
                 <input type="text" name="name" id="name" class="w-full p-2 border rounded" required>
             </div>
 

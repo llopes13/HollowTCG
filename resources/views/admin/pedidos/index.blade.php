@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="max-w-6xl mx-auto py-10">
-        <h1 class="text-2xl font-bold mb-6">Lista de Pedidos</h1>
+        <h1 class="text-2xl font-bold mb-6">Lista de Comandas</h1>
 
         @if (session('success'))
             <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
@@ -10,9 +10,9 @@
             </div>
         @endif
 
-        <table class="min-w-full bg-white border border-gray-300 rounded shadow">
+        <table class="min-w-full bg-[#1A1A2E] text-[#D4C2FC]  rounded shadow">
             <thead>
-            <tr class="bg-gray-100 text-left">
+            <tr class="bg-[#1A1A2E] text-[#D4C2FC] text-center">
                 <th class="py-2 px-4 border-b">ID</th>
                 <th class="py-2 px-4 border-b">Usuário</th>
                 <th class="py-2 px-4 border-b">Status</th>

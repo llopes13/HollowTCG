@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="p-6">
-        <h2 class="text-xl font-bold mb-4">Categorias</h2>
-        <a href="{{ route('admin.collections.create') }}" class="bg-green-600 text-white px-4 py-2 rounded">Nova Categoria</a>
+        <h2 class="text-xl font-bold mb-4">collecciones</h2>
+        <a href="{{ route('admin.collections.create') }}" class="bg-green-600 text-white px-4 py-2 rounded">Nueva Colleccion</a>
         <ul class="mt-4">
             @foreach ($collections as $collection)
                 <li class="border-b py-2 flex justify-between items-center">

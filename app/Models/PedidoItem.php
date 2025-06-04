@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PedidoItem extends Model
 {
+    use HasFactory;
     public function pedido()
     {
         return $this->belongsTo(Pedido::class);

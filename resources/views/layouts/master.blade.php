@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/main.css'])
+    @vite([
+        'resources/css/main.css',
+        'resources/css/pepe.css',
+        'resources/js/themeToggle.js',
+        'resources/js/app.js'
+    ])
+
+
     @stack('styles')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,6 +27,7 @@
 @yield('content')
 @include('layouts.footer')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @stack('scripts')
 </body>
 </html>

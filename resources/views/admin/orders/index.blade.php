@@ -4,7 +4,7 @@
     <div class="container mx-auto px-4 py-6">
         <h1 class="text-2xl font-bold text-[#D4C2FC] mb-4">Pedidos</h1>
 
-        <table class="w-full text-[#D4C2FC] bg-[#1A1A2E] border border-[#D4C2FC]">
+        <table class="w-full text-[#D4C2FC] bg-[#1A1A2E] text-[#D4C2FC] border border-[#D4C2FC]">
             <thead>
             <tr>
                 <th class="p-3 border-b border-[#D4C2FC]">ID</th>

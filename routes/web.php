@@ -63,27 +63,40 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     // Pedidos
     Route::resource('pedidos', AdminPedidoController::class);
+
+    //Datos
+    Route::get('/vendas', [AdminDashboardController::class, 'vendas'])->name('vendas');
+
+
 });
 
 
 
 //user
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/perfil', function () {
-        return view('user.profile');
-    });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/perfil', [App\Http\Controllers\ProfileController::class, 'index'])->name('perfil.index');
+    Route::match(['patch', 'put'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 });
 
+
 //Pago
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::get('/checkout/success', function () {
     return view('checkout.success');
 })->name('checkout.success');
-Route::post('/checkout/store', [OrderController::class, 'store'])->name('checkout.store');
-Route::get('/checkout/success', function () {
-    return view('orders.success');
-})->name('order.success');
+
+Route::middleware('auth')->group(function () {
+
+    Route::post('/cart/import', [CartController::class, 'import'])->name('cart.import');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+    Route::delete('/cart/{id}', [CartController::class, 'removeItem'])->name('cart.remove');
+});
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
+
 
 
 require __DIR__.'/auth.php';

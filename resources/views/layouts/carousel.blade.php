@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/resources/css/carrosel.css">
-    <title>Document</title>
-</head>
-<body>
-    <!--HTML CODE-->
-    <div class="w-full relative">
+ <div class="w-full relative">
         <div class="swiper progress-slide-carousel swiper-container relative">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -32,5 +21,3 @@
         </div>
     </div>
     <script src="{{ asset('js/carousel.js')}}"></script>
-</body>
-</html>

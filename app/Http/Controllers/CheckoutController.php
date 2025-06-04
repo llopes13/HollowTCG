@@ -1,46 +1,70 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pedido;
-use App\Models\PedidoItem;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class CheckoutController extends Controller
 {
-
-
     public function index()
     {
-        $cart = session('cart', []);
-        $total = array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cart));
+        $cart = session()->get('cart', []);
+        $total = array_reduce($cart, function ($sum, $item) {
+            return $sum + ($item['price'] * $item['quantity']);
+        }, 0);
 
         return view('checkout.index', compact('cart', 'total'));
     }
 
     public function process(Request $request)
     {
-        $cart = session('cart', []);
-        if (empty($cart)) return redirect()->back()->with('error', 'El carrito está vacío.');
-
-        $pedido = Pedido::create([
-            'user_id' => Auth::id(),
-            'total' => array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cart)),
-            'status' => 'pendiente',
+        $request->validate([
+            'card_number' => 'required|digits:16',
+            'card_name' => 'required|string',
+            'expiration' => 'required|date_format:m/y',
+            'cvv' => 'required|digits:3',
         ]);
 
+        $user = Auth::user();
+        $cart = session('cart', []);
+
+
+        $total = array_reduce($cart, function ($sum, $item) {
+            return $sum + ($item['price'] * $item['quantity']);
+        }, 0);
+
+        // Cria o pedido
+        $order = Order::create([
+            'user_id' => $user->id,
+            'total' => $total,
+            'total_price' => $total,
+            'status' => 'pendente',
+        ]);
+
+
+        // Salva os itens do pedido
         foreach ($cart as $item) {
-            PedidoItem::create([
-                'pedido_id' => $pedido->id,
+            OrderItem::create([
+                'order_id' => $order->id,
                 'pokemon_card_id' => $item['id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
             ]);
+
         }
 
-        session()->forget('cart');
+        // Limpa o carrinho
+        if (Auth::check()) {
+            \App\Models\CartItem::where('user_id', Auth::id())->delete(); // limpa o carrinho persistido
+        } else {
+            session()->forget('cart'); // limpa o carrinho da sessão
+        }
 
-        return redirect()->route('dashboard')->with('success', 'Pedido realizado con éxito.');
+
+        return redirect()->route('checkout.success');
     }
 
 }
